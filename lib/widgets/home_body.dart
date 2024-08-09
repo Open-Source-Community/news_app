@@ -90,10 +90,10 @@ Widget _HomeSuccessState(List articles, List articlesTop, List categories) {
           ),
           const SizedBox(height: 20),
           CarouselSlider.builder(
-              itemCount: articlesTop.length,
+              itemCount: articlesTop.isEmpty?articles.length:articlesTop.length,
               itemBuilder: (context, index, realIndex) {
-                String? image = articlesTop[index].urlImage;
-                String? name = articlesTop[index].title;
+                String? image =articlesTop.isEmpty? articles[index].urlImage : articlesTop[index].urlImage;
+                String? name = articlesTop.isEmpty?articles[index].title: articlesTop[index].title;
                 return buildImage(image!, index, name!, context);
               },
               options: CarouselOptions(
